@@ -1,3 +1,16 @@
+#!/usr/bin/env python3.4
+
+import os
+
+import sys
+
+import config
+
+import db
+
+import datetime
+
+
 from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
 import random
 
