@@ -33,14 +33,18 @@ Levap_replica = ["Да вы издевайтесь!",
                  "Я БОГ!!!",
                  "Чума на твою голову, bastardo!",
                  "Так отвратительно обосрать классику это еще уметь надо.",
-                 "Сегодня я на крыльях ветра."
+                 "Сегодня я на крыльях ветра.",
+                 "*достал дробовик и расстрелял (username)*"
                  ]
 
 def reply(bot, update):
     a = random.randint(0,3)
     #update.message.reply_text(str(a))
+    responce = Levap_replica[random.randint(0,len(Levap_replica))]
+    if "(username)" in responce:
+        responce = responce.replace("(username)",update.message.from_user.username)
     if a == 0:
-        update.message.reply_text(Levap_replica[random.randint(0,len(Levap_replica))])
+        update.message.reply_text(responce, quote=False)
 
 updater = Updater('829807051:AAGwMUS5eAvJ15xKIOwMdbmbGr_MUosg7Wo')
 
