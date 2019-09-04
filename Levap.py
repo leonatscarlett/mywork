@@ -35,11 +35,12 @@ Levap_replica = ["Да вы издевайтесь!",
                  "Так отвратительно обосрать классику это еще уметь надо.",
                  "Сегодня я на крыльях ветра.",
                  "*достал дробовик и расстрелял (username)*",
-                 "(username), ты вообще ничего толкового предложить не можешь! Уйди восвояси!"
+                 "(username), ты вообще ничего толкового предложить не можешь! Уйди восвояси!",
+                 "(username)!!! ВЕРНИСЬ!!! Я ВСЕ ПРОЩУ!!! ПОЖАЛУЙСТА!!!"
                  ]
 
 def reply(bot, update):
-    a = random.randint(0,3)
+    a = random.randint(0,4)
     #update.message.reply_text(str(a))
     responce = Levap_replica[random.randint(0,len(Levap_replica))]
     if "(username)" in responce:
