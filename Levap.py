@@ -139,7 +139,7 @@ def reply(bot, update):
     #update.message.reply_text(str(a))
     probability = default_probability
     response =  "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
-    msgtext = update.message.text:
+    msgtext = update.message.text
     if msgtext is None:
         msgtext = ""
     for key in Levap_table_1.keys():
