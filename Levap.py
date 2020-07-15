@@ -148,7 +148,7 @@ def reply(bot, update):
                 break
         else:
             break
-    if responce == "(default)"
+    if responce == "(default)":
         responce = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in responce:
         responce = responce.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
