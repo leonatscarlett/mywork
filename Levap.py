@@ -143,7 +143,8 @@ def reply(bot, update):
         for keyword in Levap_table_2[key]:
             if keyword in update.message.text:
                 probability = boosted_probability
-                responce = Levap_table_1[key][random.randint(0,len(Levap_table_1[key]))]
+                selected_set = Levap_table_1[key]
+                responce = selected_set[random.randint(0,len(selected_set))]
                 break
         else:
             break
