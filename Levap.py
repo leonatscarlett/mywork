@@ -153,7 +153,9 @@ def reply(bot, update):
     if "(username)" in responce:
         responce = responce.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
     # if a < probability:
-    update.message.reply_text(responce, quote=False)
+    chat_id = update.message.chat.id
+    send_message(chat_id, responce)
+    # update.message.reply_text(responce, quote=False)
 
 updater = Updater('829807051:AAGwMUS5eAvJ15xKIOwMdbmbGr_MUosg7Wo')
 
