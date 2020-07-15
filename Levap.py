@@ -1,8 +1,8 @@
 from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
 import random
 
-default_probability = 100
-boosted_probability = 100
+default_probability = 20
+boosted_probability = 30
 
 known_nicknames = [
     "Сиссел",
@@ -152,7 +152,7 @@ def reply(bot, update):
     #    response = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in response:
         response = response.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
-    if a < 100:
+    if a < default_probability:
         update.message.reply_text(response, quote=False)
     #chat_id = update.message.chat.id
     #bot.send_message(chat_id, response)
