@@ -152,7 +152,7 @@ def reply(bot, update):
     #    response = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in response:
         response = response.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
-    if a < probability:
+    if a < 100:
         update.message.reply_text(responce, quote=False)
     #chat_id = update.message.chat.id
     #bot.send_message(chat_id, response)
