@@ -140,7 +140,7 @@ def reply(bot, update):
     probability = default_probability
     response =  "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
     msgtext = ""
-    if update.message is not None:
+    if update.message.text is not None:
         msgtext = update.message.text
     for key in Levap_table_1.keys():
         for keyword in Levap_table_2[key]:
