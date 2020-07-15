@@ -138,20 +138,20 @@ def reply(bot, update):
     a = random.randint(0,99) # на будущее: да, Сис, значение 99 здесь достижимо, верхняя граница включительна.
     #update.message.reply_text(str(a))
     probability = default_probability
-    responce = "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
+    response = "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
     for key in Levap_table_1.keys():
         for keyword in Levap_table_2[key]:
             if keyword in update.message.text:
                 probability = boosted_probability
                 selected_set = Levap_table_1[key]
-                responce = selected_set[random.randint(0,len(selected_set))]
+                response = selected_set[random.randint(0,len(selected_set))]
                 break
         else:
             break
-    if responce == "(default)":
-        responce = idle_nothing[random.randint(0, len(idle_nothing))]
-    if "(username)" in responce:
-        responce = responce.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
+    if response == "(default)":
+        response = idle_nothing[random.randint(0, len(idle_nothing))]
+    if "(username)" in response:
+        response = response.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
     # if a < probability:
     chat_id = update.message.chat.id
     send_message(chat_id, responce)
