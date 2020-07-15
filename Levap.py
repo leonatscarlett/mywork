@@ -145,8 +145,8 @@ def reply(bot, update):
                 probability = boosted_probability
                 responce = Levap_table_1[key][random.randint(0,len(Levap_table_1[key]))]
                 break
-    else:
-        break
+        else:
+            break
     if responce == ""
         responce = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in responce:
