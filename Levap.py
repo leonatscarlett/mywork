@@ -1,7 +1,7 @@
 from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
 import random
 
-default_probability = 15
+default_probability = 100
 boosted_probability = 100
 
 known_nicknames = [
