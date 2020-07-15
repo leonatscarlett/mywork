@@ -139,15 +139,19 @@ def reply(bot, update):
     #update.message.reply_text(str(a))
     probability = default_probability
     response =  "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
+    msgtext = update.message.text:
+    if msgtext is None:
+        msgtext = ""
     for key in Levap_table_1.keys():
         for keyword in Levap_table_2[key]:
-            if keyword in update.message.text:
+            if keyword in msgtext:
                 probability = boosted_probability
                 selected_set = Levap_table_1[key]
                 response = selected_set[random.randint(0,len(selected_set))]
                 break
-        else:
+        if response != "(default)":
             break
+
     if response == "(default)":
         response = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in response:
