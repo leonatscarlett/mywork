@@ -158,7 +158,7 @@ def reply(bot, update):
     #bot.send_message(chat_id, response)
 
 
-updater = Updater('829807051:AAGwMUS5eAvJ15xKIOwMdbmbGr_MUosg7Wo')
+updater = Updater('829807051:AAGwMUS5eAvJ15xKIOwMdbmbGr_MUosg7Wo', use_context=True)
 
 updater.dispatcher.add_handler(MessageHandler(Filters.all, reply))
 
