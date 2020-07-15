@@ -2,7 +2,7 @@ from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
 import random
 
 default_probability = 20
-boosted_probability = 30
+boosted_probability = 100
 
 known_nicknames = [
     "Сиссел",
@@ -111,16 +111,16 @@ BNM_keywords = [
     "дело"
 ]
 
-#Levap_table_1 = {}
-#Levap_table_2 = {}
-#Levap_table_1["LOL"] = league_of_legends
-#Levap_table_2["LOL"] = LOL_keywords
-#Levap_table_1["social"] = social
-#Levap_table_2["social"] = social_keywords
-#Levap_table_1["personal"] = personal
-#Levap_table_2["personal"] = personal_keywords
-#Levap_table_1["BNM"] = BNM
-#Levap_table_2["BNM"] = BNM_keywords
+Levap_table_1 = {}
+Levap_table_2 = {}
+Levap_table_1["LOL"] = league_of_legends
+Levap_table_2["LOL"] = LOL_keywords
+Levap_table_1["social"] = social
+Levap_table_2["social"] = social_keywords
+Levap_table_1["personal"] = personal
+Levap_table_2["personal"] = personal_keywords
+Levap_table_1["BNM"] = BNM
+Levap_table_2["BNM"] = BNM_keywords
 
 Levap_replica = []
 for replica in idle_nothing:
@@ -138,21 +138,21 @@ def reply(bot, update):
     a = random.randint(0,99) # на будущее: да, Сис, значение 99 здесь достижимо, верхняя граница включительна.
     #update.message.reply_text(str(a))
     probability = default_probability
-    response = Levap_replica[random.randint(0,len(Levap_replica))] # "(default)" #
-    #for key in Levap_table_1.keys():
-    #    for keyword in Levap_table_2[key]:
-    #        if keyword in update.message.text:
-    #            probability = boosted_probability
-    #            selected_set = Levap_table_1[key]
-    #            response = selected_set[random.randint(0,len(selected_set))]
-    #            break
-    #    else:
-    #        break
-    # if response == "(default)":
-    #    response = idle_nothing[random.randint(0, len(idle_nothing))]
+    response =  "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
+    for key in Levap_table_1.keys():
+        for keyword in Levap_table_2[key]:
+            if keyword in update.message.text:
+                probability = boosted_probability
+                selected_set = Levap_table_1[key]
+                response = selected_set[random.randint(0,len(selected_set))]
+                break
+        else:
+            break
+    if response == "(default)":
+        response = idle_nothing[random.randint(0, len(idle_nothing))]
     if "(username)" in response:
         response = response.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
-    if a < default_probability:
+    if a < probability:
         update.message.reply_text(response, quote=False)
     #chat_id = update.message.chat.id
     #bot.send_message(chat_id, response)
