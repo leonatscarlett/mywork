@@ -38,8 +38,7 @@ league_of_legends = [
 
 LOL_keywords = [
     "лол",
-    "лолец",
-    "Лига Легенд",
+    "лига легенд",
     "киберспорт"
 ]
 
@@ -52,11 +51,11 @@ social = [
 ]
 
 social_keywords = [
-    "Вконтакте",
+    "вконтакте",
     "контакт",
-    "Твиттер",
+    "твиттер",
     "твитор",
-    "Ютуб",
+    "ютуб",
     "ютруп",
     "фикбук",
     "сервер",
@@ -78,12 +77,12 @@ personal = [
 ]
 
 personal_keywords = [
-    "Польк",
-    "Полли",
-    "Аполло",
+    "польк",
+    "полли",
+    "аполло",
     "глуп",
-    "Беларус",
-    "Белорусси"
+    "беларус",
+    "белорусси"
 ]
 
 BNM = [
@@ -107,10 +106,8 @@ BNM = [
 ]
 
 BNM_keywords = [
-    "Такомобил",
     "такомобил",
     "бугурт",
-    "Бугурт",
     " дел"
 ]
 
@@ -144,7 +141,7 @@ def reply(update: Update, context: CallbackContext):
     response = "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
     msgtext = ""
     if update.message is not None:
-        msgtext = update.message.text
+        msgtext = update.message.text.lower()
     for key in Levap_table_1.keys():
         for keyword in Levap_table_2[key]:
             if keyword in msgtext:
