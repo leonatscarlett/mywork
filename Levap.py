@@ -122,41 +122,44 @@ Levap_table_2["personal"] = personal_keywords
 Levap_table_1["BNM"] = BNM
 Levap_table_2["BNM"] = BNM_keywords
 
-Levap_replica = []
-for replica in idle_nothing:
-    Levap_replica.append(replica)
-for replica in league_of_legends:
-    Levap_replica.append(replica)
-for replica in social:
-    Levap_replica.append(replica)
-for replica in personal:
-    Levap_replica.append(replica)
-for replica in BNM:
-    Levap_replica.append(replica)
+#Levap_replica = []
+#for replica in idle_nothing:
+#    Levap_replica.append(replica)
+#for replica in league_of_legends:
+#    Levap_replica.append(replica)
+#for replica in social:
+#    Levap_replica.append(replica)
+#for replica in personal:
+#    Levap_replica.append(replica)
+#for replica in BNM:
+#    Levap_replica.append(replica)
 
-def reply(update: Update, context: CallbackContext):
+def universal_reply(msgtext):
     a = random.randint(0,99) # на будущее: да, Сис, значение 99 здесь достижимо, верхняя граница включительна.
     #update.message.reply_text(str(a))
     probability = default_probability
     response = "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
-    msgtext = ""
-    if update.message is not None:
-        msgtext = update.message.text.lower()
     for key in Levap_table_1.keys():
         for keyword in Levap_table_2[key]:
-            if keyword in msgtext:
+            if keyword in msgtext.lower():
                 probability = boosted_probability
                 selected_set = Levap_table_1[key]
                 response = selected_set[random.randint(0,len(selected_set) - 1)]
                 break
         if response != "(default)":
             break
-
     if response == "(default)":
         response = idle_nothing[random.randint(0, len(idle_nothing) - 1)]
     if "(username)" in response:
         response = response.replace("(username)", known_nicknames[random.randint(0,len(known_nicknames) - 1)]) # update.message.from_user.username
-    if a < probability:
+    return (a < probability), response
+
+def Telegram_reply(update: Update, context: CallbackContext):
+    msgtext = ""
+    if update.message is not None:
+        msgtext = update.message.text
+    success, response = universal_reply(msgtext)
+    if success:
         update.message.reply_text(response, quote=False)
     #chat_id = update.message.chat.id
     #bot.send_message(chat_id, response)
@@ -164,7 +167,7 @@ def reply(update: Update, context: CallbackContext):
 
 updater = Updater('829807051:AAGwMUS5eAvJ15xKIOwMdbmbGr_MUosg7Wo', use_context=True)
 
-updater.dispatcher.add_handler(MessageHandler(Filters.all, reply))
+updater.dispatcher.add_handler(MessageHandler(Filters.all, Telegram_reply))
 
 updater.start_polling()
 updater.idle()
