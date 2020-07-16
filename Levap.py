@@ -1,8 +1,9 @@
-from telegram.ext import Updater, CommandHandler, Filters, MessageHandler
+from telegram import Update
+from telegram.ext import Updater, Filters, MessageHandler, CallbackContext
 import random
 
 default_probability = 20
-boosted_probability = 100
+boosted_probability = 80
 
 known_nicknames = [
     "Сиссел",
@@ -106,8 +107,10 @@ BNM = [
 ]
 
 BNM_keywords = [
-    "акомобил",
+    "Такомобил",
+    "такомобил",
     "бугурт",
+    "Бугурт",
     " дел"
 ]
 
@@ -134,11 +137,11 @@ for replica in personal:
 for replica in BNM:
     Levap_replica.append(replica)
 
-def reply(bot, update):
+def reply(update: Update, context: CallbackContext):
     a = random.randint(0,99) # на будущее: да, Сис, значение 99 здесь достижимо, верхняя граница включительна.
     #update.message.reply_text(str(a))
     probability = default_probability
-    response =  "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
+    response = "(default)" # Levap_replica[random.randint(0,len(Levap_replica))]
     msgtext = ""
     if update.message is not None:
         msgtext = update.message.text
@@ -147,15 +150,15 @@ def reply(bot, update):
             if keyword in msgtext:
                 probability = boosted_probability
                 selected_set = Levap_table_1[key]
-                response = selected_set[random.randint(0,len(selected_set))]
+                response = selected_set[random.randint(0,len(selected_set) - 1)]
                 break
         if response != "(default)":
             break
 
     if response == "(default)":
-        response = idle_nothing[random.randint(0, len(idle_nothing))]
+        response = idle_nothing[random.randint(0, len(idle_nothing) - 1)]
     if "(username)" in response:
-        response = response.replace("(username)",known_nicknames[random.randint(0,len(known_nicknames))]) # update.message.from_user.username
+        response = response.replace("(username)", known_nicknames[random.randint(0,len(known_nicknames) - 1)]) # update.message.from_user.username
     if a < probability:
         update.message.reply_text(response, quote=False)
     #chat_id = update.message.chat.id
