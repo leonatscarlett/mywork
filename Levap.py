@@ -153,7 +153,24 @@ BNM_keywords = [
     "дурень",
     "торчок",
     "торчк",
-    "идиот"
+    "идиот",
+    "пидор"
+]
+
+pidor = [
+    "О, прелестно! Мы еще будем мериться мужскими стволами?",
+    "Может, скажу скажешь, что сын олигарха? А? Зажрался!",
+    "Даже поганные ниггеры и то лучше вас.",
+    "I don't like them putting chemicals in the water, THEY TURN THE FREAKING FROGS GAY!",
+    "Я не знаю, кто такой Федя, но он как-то с этим связан!"
+]
+
+pidor_keywords = [
+    "/pidor@SublimeBot",
+    "/pidoreg@SublimeBot",
+    "/pidorstats@SublimeBot",
+    "/pidorall@SublimeBot",
+    "/pidorme@SublimeBot",
 ]
 
 Levap_table_1 = {}
