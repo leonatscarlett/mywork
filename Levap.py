@@ -30,7 +30,8 @@ idle_nothing = [
     "*до слёз*  😥",
 	"Argument of silly hater, who understand nothing about it.",
     "Привет. Поговорим в лс?",
-	"О! Ещё в игнор ушли как последний трус. Прелестно..."
+	"О! Ещё в игнор ушли как последний трус. Прелестно...",
+	"Хммм, занимательно."
 ]
 
 league_of_legends = [
@@ -166,11 +167,7 @@ pidor = [
 ]
 
 pidor_keywords = [
-    "/pidor@SublimeBot",
-    "/pidoreg@SublimeBot",
-    "/pidorstats@SublimeBot",
-    "/pidorall@SublimeBot",
-    "/pidorme@SublimeBot",
+    "pidor"
 ]
 
 Levap_table_1 = {}
